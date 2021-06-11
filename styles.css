@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  font-family: "Muli", sans-serif;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+}
+
+.slide {
+  flex: 1;
+  height: 80vh;
+  margin: 10px;
+  color: #fff;
+  cursor: pointer;
+  overflow: visible;
+  border-radius: 20px;
+  position: relative;
+  background-size: cover;
+  filter: grayscale(0.8);
+  background-position-x: 45%;
+  background-position-y: 50%;
+  border: 1px solid transparent;
+  background-repeat: no-repeat;
+  transition: 0.3s all cubic-bezier(0.05, 0.72, 0.17, 1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.slide:hover {
+  filter: grayscale(0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.slide.active {
+  flex: 8;
+  overflow: hidden;
+  filter: grayscale(0);
+  border: 1px solid transparent;
+  animation: 30s translate alternate cubic-bezier(0.5, -0.3, 0.5, 1.3);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.slide h3 {
+  margin: 0;
+  left: 20px;
+  opacity: 0;
+  bottom: 0;
+  font-size: 24px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  transform-origin: left;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 40px);
+  text-shadow: 0 2px 2px black;
+  transition: 0.4s all cubic-bezier(0.05, 0.72, 0.17, 1.15);
+}
+
+.slide:hover:not(.active) h3 {
+  opacity: 1;
+  bottom: 30px;
+  max-width: initial;
+  text-overflow: initial;
+  transform: rotate(-90deg);
+}
+
+.slide.active h3 {
+  opacity: 1;
+  bottom: 30px;
+}
+
+.slide.active:hover h3 {
+  opacity: 1;
+  bottom: 30px;
+}
+
+@keyframes translate {
+  from {
+    background-position-x: 45%;
+  }
+  from {
+    background-position-x: 55%;
+  }
+}
